@@ -102,8 +102,10 @@ class ProductController extends Controller
 
         if ($kataDicari) {
             # code...
-            $dataProductDicari->where('name', 'like', '%' . $kataDicari . '%')->take(6);
+            $dataProductDicari->where('name', 'like', '%' . $kataDicari . '%')->get();
         }
+
+        // $dataProductDicari=DB::select("SELECT * FROM products WHERE name LIKE '%{$kataDicari}%'");
         return view('product.search', [
             "kataDicari" => $kataDicari,
             "dataProductDicari" => $dataProductDicari->get(),
