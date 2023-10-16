@@ -114,8 +114,7 @@ class TransactionController extends Controller
     public function checkout(Request $request)
     {
         $dataProduct = Product::where('id', $request->id)->get();
-        // $dataPayment = DB::select('SELECT * FROM payments');
-        $dataPayment = Payment::all();
+        $dataPayment = DB::select('SELECT * FROM payments');
         $saldo = 1000000;
         return view('transaction.checkout', ["dataProduct" => $dataProduct, "saldoSekarang" => $saldo, "dataPayment" => $dataPayment]);
     }
