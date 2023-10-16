@@ -15,7 +15,7 @@ class PaymentTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->enum('name', ['ovo', 'bank', 'flip', 'gopay', 'shopeepay']);
+            $table->enum('name', ['Ovo', 'Bank', 'Flip', 'Gopay', 'Shopeepay']);
             $table->timestamps();
         });
     }

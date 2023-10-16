@@ -50,6 +50,10 @@ class ProductController extends Controller
     {
         //
         $dataDetailProduct = Product::where('slug', $product)->get();
+        if (count($dataDetailProduct) == 0) {
+            # code...
+            return redirect()->back();
+        }
         return view('product.detailProduct', ["dataDetailProduct" => $dataDetailProduct]);
     }
 
