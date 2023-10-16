@@ -95,7 +95,12 @@ class ProductController extends Controller
 
     public function search(Request $request)
     {
-        $kataDicari = $request->search;
+        // validation
+        $validatedData = $request->validate([
+            'search' => 'required|regex:/^[a-zA-Z0-9\s]+$/',
+        ]);
+
+        $kataDicari = $validatedData['search'];
 
         $dataProductDicari = Product::latest();
 

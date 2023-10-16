@@ -68,8 +68,9 @@
                                             <form method="post" action="{{ url('/store') }}">
                                                 @csrf
                                                 <input type="hidden" value="{{ $dataProduct[0]->id }}" name="products_id">
-                                                <input type="hidden" value="{{ $dataProduct[0]->price }}" name="total">
-                                                <input type="hidden" value="{{ $saldoSekarang }}" name="saldo">
+                                                <input type="hidden" value="{{ encrypt($dataProduct[0]->price) }}"
+                                                    name="total">
+                                                <input type="hidden" value="{{ encrypt($saldoSekarang) }}" name="saldo">
                                                 <div class="mb-3">
                                                     <div class="form-outline">
                                                         <label class="form-label" for="form3Examplea2">Destination

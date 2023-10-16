@@ -8,7 +8,7 @@
                     <div>
                         <h2 class="title ">Product Search :
                             <span class="font-bold">
-                                <?php echo $kataDicari; ?>
+                                {{ $kataDicari }}
                             </span>
                         </h2>
                     </div>
