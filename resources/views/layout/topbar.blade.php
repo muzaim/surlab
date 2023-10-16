@@ -61,7 +61,7 @@
                         fa-fw mr-2 text-gray-400"></i>
                         Profile
                     </a>
-                    <a class="dropdown-item" href="{{ '/transaction/' . encrypt(Auth::user()->id) }}">
+                    <a class="dropdown-item" href="{{ '/transaction/' . Auth::user()->id }}">
                         <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                         Transaction
                     </a>

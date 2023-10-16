@@ -22,23 +22,15 @@ class TransactionController extends Controller
      */
     public function index($request)
     {
-        try {
-            // authority user only
-            if (Auth::user()->id != decrypt($request)) {
-                return redirect()->back();
-            }
-            $dataTransaction = Transaction::with(['users', 'products', 'payments'])
-                ->whereHas('users', function ($query) use ($request) {
-                    $query->where('id', decrypt($request));
-                })
-                ->orderBy('created_at', 'desc')
-                ->get();
 
-            return view('transaction.index', compact('dataTransaction'));
-        } catch (DecryptException $e) {
-            //
-            return redirect()->back();
-        }
+        $dataTransaction = Transaction::with(['users', 'products', 'payments'])
+            ->whereHas('users', function ($query) use ($request) {
+                $query->where('id', $request);
+            })
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return view('transaction.index', compact('dataTransaction'));
     }
 
     /**
@@ -60,39 +52,17 @@ class TransactionController extends Controller
     public function store(Request $request)
     {
         // WITHOUT VALIDATION
-        // $decryptedTotal = decrypt($request->total);
-        // $decryptedSaldo = decrypt($request->saldo);
-        // $params = $request->all();
-        // $transaksi = new Transaction;
-        // $transaksi->users_id = Auth::user()->id;
-        // $transaksi->products_id = $params['products_id'];
-        // $transaksi->address = $params['address'];
-        // $transaksi->phone = $params['phone'];
-        // $transaksi->total = $decryptedTotal;
-        // $transaksi->payments_id = $params['payments_id'];
-        // // $saldoSekarang = $params['saldo'] - $params['total'];
-        // $saldoSekarang = $decryptedSaldo - $decryptedTotal;
-        // $transaksi->save();
+        $params = $request->all();
+        $transaksi = new Transaction;
+        $transaksi->users_id = Auth::user()->id;
+        $transaksi->products_id = $params['products_id'];
+        $transaksi->address = $params['address'];
+        $transaksi->phone = $params['phone'];
+        $transaksi->total = $params['total'];
+        $transaksi->payments_id = $params['payments_id'];
+        $saldoSekarang = $params['saldo'] - $params['total'];
+        $transaksi->save();
 
-
-        // WITH VALIDATION
-        $validatedData = $request->validate([
-            'products_id'     => 'required',
-            'address'   => 'required|alpha',
-            'phone'   => 'required|numeric',
-            'total'   => 'required',
-            'payments_id'   => 'required|in:1,2,3,4,5',
-        ]);
-
-        Transaction::create([
-            'products_id'     => $validatedData['products_id'],
-            'address'   => $validatedData['address'],
-            'phone'   => $validatedData['phone'],
-            'total'   => decrypt($validatedData['total']),
-            'payments_id'   => $validatedData['payments_id'],
-            'users_id'   => Auth::user()->id,
-        ]);
-        $saldoSekarang = decrypt($request->saldo) -  decrypt($validatedData['total']);
 
         return redirect()->back()->with(array('saldoSekarang' => $saldoSekarang, 'message' => 'Transaction was successful, and you have ' . currency_IDR($saldoSekarang) . ' left.'));;
     }
@@ -145,8 +115,7 @@ class TransactionController extends Controller
     public function checkout(Request $request)
     {
         $dataProduct = Product::where('id', $request->id)->get();
-        // $dataPayment = DB::select('SELECT * FROM payments');
-        $dataPayment = Payment::all();
+        $dataPayment = DB::select('SELECT * FROM payments');
         $saldo = 1000000;
         return view('transaction.checkout', ["dataProduct" => $dataProduct, "saldoSekarang" => $saldo, "dataPayment" => $dataPayment]);
     }
