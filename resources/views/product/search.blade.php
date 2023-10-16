@@ -4,25 +4,13 @@
     <div class="container-fluid container min-h-100">
         <div class="row justify-content-center text-center">
             <div class="col-md-8 col-lg-12 mb-4">
-                <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-start">
                     <div>
-                        <h2 class="title ">Product Search : <span class="font-bold"><?php echo $kataDicari; ?></span></h2>
-                    </div>
-                    <div>
-                        <form action="/product/search" method="post"
-                            class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                            @csrf
-                            <div class="input-group">
-                                <input type="text" class="form-control bg-light border-0 small"
-                                    placeholder="Search for..." aria-label="Search" name="search"
-                                    aria-describedby="basic-addon2">
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary" type="submit">
-                                        <i class="fas fa-search fa-sm"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
+                        <h2 class="title ">Product Search :
+                            <span class="font-bold">
+                                {{ $kataDicari }}
+                            </span>
+                        </h2>
                     </div>
                 </div>
             </div>

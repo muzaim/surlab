@@ -7,25 +7,37 @@
                 <div class="col-md-8 col-lg-12 mb-4">
                     <div class="d-flex justify-content-between">
                         <div>
+
                             <h2 class="title font-bold">Popular Products</h2>
                         </div>
                         <div>
                             <form action="/product/search" method="post"
                                 class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                                {{ csrf_field() }}
+                                @csrf
                                 <div class="input-group">
-                                    <input type="text" class="form-control bg-light border-0 small"
+                                    <input type="text"
+                                        class="form-control bg-light border-0 small @error('search') is-invalid
+                                    @enderror"
                                         placeholder="Search for..." aria-label="Search" name="search"
                                         aria-describedby="basic-addon2">
+
                                     <div class="input-group-append">
                                         <button class="btn btn-primary" type="submit">
                                             <i class="fas fa-search fa-sm"></i>
                                         </button>
                                     </div>
+
                                 </div>
+                                @error('search')
+                                    <div class="invalid-feedback d-block">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </form>
                         </div>
+
                     </div>
+
                 </div>
             </div>
             <div class="row ">

@@ -13,9 +13,17 @@
                                         <div class="p-5">
                                             <div class="d-flex justify-content-between align-items-center mb-5">
                                                 <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
-                                                <h6 class="mb-0 text-muted">Balance :
-                                                    <span class="font-bold">{{ currency_IDR($saldo) }}</span>
-                                                </h6>
+
+                                                @if (session()->has('saldoSekarang'))
+                                                    <h6 class="mb-0 text-muted">Balance :
+                                                        <span class="font-bold">
+                                                            {{ currency_IDR(session()->get('saldoSekarang')) }}</span>
+                                                    </h6>
+                                                @else
+                                                    <h6 class="mb-0 text-muted">Balance :
+                                                        <span class="font-bold">{{ currency_IDR($saldoSekarang) }}</span>
+                                                    </h6>
+                                                @endif
                                             </div>
                                             <hr class="my-4">
                                             @foreach ($dataProduct as $data)
@@ -60,8 +68,9 @@
                                             <form method="post" action="{{ url('/store') }}">
                                                 @csrf
                                                 <input type="hidden" value="{{ $dataProduct[0]->id }}" name="products_id">
-                                                <input type="hidden" value="{{ $dataProduct[0]->price }}" name="total">
-                                                <input type="hidden" value="{{ $saldo }}" name="saldo">
+                                                <input type="hidden" value="{{ encrypt($dataProduct[0]->price) }}"
+                                                    name="total">
+                                                <input type="hidden" value="{{ encrypt($saldoSekarang) }}" name="saldo">
                                                 <div class="mb-3">
                                                     <div class="form-outline">
                                                         <label class="form-label" for="form3Examplea2">Destination
@@ -95,13 +104,13 @@
                                                 <div class="mb-4 pb-2">
                                                     <label class="form-label" for="form3Examplea2">Payment</label>
                                                     <select
-                                                        class="select form-control @error('payments_id') is-invalid
+                                                        class="select text-capitalize form-control @error('payments_id') is-invalid
                                                     @enderror"
                                                         name="payments_id">
                                                         <option value="" selected disabled hidden>-- Choose --
                                                         </option>
                                                         @foreach ($dataPayment as $data)
-                                                            <option value="{{ $data->id }}">
+                                                            <option value="{{ $data->id }}" class="text-capitalize">
                                                                 {{ $data->name }}
                                                             </option>
                                                         @endforeach

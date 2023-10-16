@@ -68,6 +68,26 @@ class TransactionSeeder extends Seeder
         ]);
 
         DB::table('transactions')->insert([
+            'users_id' => '2',
+            'products_id' => '8',
+            'address' => "Jl Pahlawan no 28",
+            'phone' => "082746128312",
+            'total' => 215000,
+            'payments_id' => '4',
+            'created_at' => now()
+        ]);
+
+        DB::table('transactions')->insert([
+            'users_id' => '2',
+            'products_id' => '5',
+            'address' => "Jl Pahlawan no 28",
+            'phone' => "082746128312",
+            'total' => 215000,
+            'payments_id' => '4',
+            'created_at' => now()
+        ]);
+
+        DB::table('transactions')->insert([
             'users_id' => '3',
             'products_id' => '8',
             'address' => "Perumahan Rambutan No 23",
@@ -114,6 +134,106 @@ class TransactionSeeder extends Seeder
             'phone' => "088927124663",
             'total' => 256000,
             'payments_id' => '5',
+            'created_at' => now()
+        ]);
+
+        DB::table('transactions')->insert([
+            'users_id' => '3',
+            'products_id' => '2',
+            'address' => "Perumahan Rambutan No 23",
+            'phone' => "088927124663",
+            'total' => 256000,
+            'payments_id' => '5',
+            'created_at' => now()
+        ]);
+
+        DB::table('transactions')->insert([
+            'users_id' => '3',
+            'products_id' => '3',
+            'address' => "Perumahan Rambutan No 23",
+            'phone' => "088927124663",
+            'total' => 234000,
+            'payments_id' => '2',
+            'created_at' => now()
+        ]);
+
+        DB::table('transactions')->insert([
+            'users_id' => '4',
+            'products_id' => '1',
+            'address' => "Apartemen Mekar Sari no 23",
+            'phone' => "082645592381",
+            'total' => 234000,
+            'payments_id' => '1',
+            'created_at' => now()
+        ]);
+
+        DB::table('transactions')->insert([
+            'users_id' => '4',
+            'products_id' => '2',
+            'address' => "Apartemen Mekar Sari no 23",
+            'phone' => "082645592381",
+            'total' => 365000,
+            'payments_id' => '3',
+            'created_at' => now()
+        ]);
+
+        DB::table('transactions')->insert([
+            'users_id' => '4',
+            'products_id' => '6',
+            'address' => "Apartemen Mekar Sari no 23",
+            'phone' => "082645592381",
+            'total' => 256000,
+            'payments_id' => '1',
+            'created_at' => now()
+        ]);
+
+        DB::table('transactions')->insert([
+            'users_id' => '4',
+            'products_id' => '4',
+            'address' => "Apartemen Mekar Sari no 23",
+            'phone' => "082645592381",
+            'total' => 486000,
+            'payments_id' => '4',
+            'created_at' => now()
+        ]);
+
+        DB::table('transactions')->insert([
+            'users_id' => '5',
+            'products_id' => '4',
+            'address' => "Jl Sawojajar no 84",
+            'phone' => "08739246123",
+            'total' => 486000,
+            'payments_id' => '5',
+            'created_at' => now()
+        ]);
+
+        DB::table('transactions')->insert([
+            'users_id' => '5',
+            'products_id' => '4',
+            'address' => "Jl Sawojajar no 84",
+            'phone' => "08739246123",
+            'total' => 486000,
+            'payments_id' => '3',
+            'created_at' => now()
+        ]);
+
+        DB::table('transactions')->insert([
+            'users_id' => '5',
+            'products_id' => '4',
+            'address' => "Jl Sawojajar no 84",
+            'phone' => "08739246123",
+            'total' => 486000,
+            'payments_id' => '2',
+            'created_at' => now()
+        ]);
+
+        DB::table('transactions')->insert([
+            'users_id' => '5',
+            'products_id' => '5',
+            'address' => "Jl Sawojajar no 84",
+            'phone' => "08739246123",
+            'total' => 318000,
+            'payments_id' => '3',
             'created_at' => now()
         ]);
     }

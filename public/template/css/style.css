@@ -169,6 +169,10 @@ a:hover {
     border-radius: 25px;
 }
 
+select {
+    text-transform: capitalize
+}
+
 .min-h-100 {
     min-height: 90vh;
 }

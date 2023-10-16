@@ -4,7 +4,7 @@
     <div class="container-fluid container min-h-100">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Data Transaksi</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Transaction Data</h6>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -13,10 +13,10 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Product</th>
-                                <th>Alamat Tujuan</th>
-                                <th>No HP</th>
+                                <th>Destination Address</th>
+                                <th>Phone Number</th>
                                 <th>Total</th>
-                                <th>Pembayaran</th>
+                                <th>Payment Method</th>
                             </tr>
                         </thead>
                         <tbody>

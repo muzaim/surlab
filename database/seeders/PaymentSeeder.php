@@ -17,27 +17,27 @@ class PaymentSeeder extends Seeder
     {
         //
         DB::table('payments')->insert([
-            'name' => 'ovo',
+            'name' => 'Ovo',
             'created_at' => now()
         ]);
 
         DB::table('payments')->insert([
-            'name' => 'bank',
+            'name' => 'Bank',
             'created_at' => now()
         ]);
 
         DB::table('payments')->insert([
-            'name' => 'flip',
+            'name' => 'Flip',
             'created_at' => now()
         ]);
 
         DB::table('payments')->insert([
-            'name' => 'gopay',
+            'name' => 'Gopay',
             'created_at' => now()
         ]);
 
         DB::table('payments')->insert([
-            'name' => 'shopeepay',
+            'name' => 'Shopeepay',
             'created_at' => now()
         ]);
     }
